@@ -1,13 +1,26 @@
-1st terminal:
+(Download the zip file and extract all)
 
-sudo apt update
-sudo apt install openmpi-bin
-sudo apt install libopenmpi-dev
-mpirun --version
+Zip File: https://sourceforge.net/projects/mpjexpress/files/releases/
 
-------------------------------------------
+Jar file is present in: mpj-v0_44 -> lib -> mpj.jar
+The file "mpjrun.sh" which is required to run is present in: mpj-v0_44 -> bin -> mpjrun.sh
 
-2nd terminal:
 
-mpicc MPI.c
-mpirun -np 4 ./a.out
+
+To run: (Be in the folder which contains the java file)
+
+javac -cp LocationOfJarFile DistributedSum.java
+LocationOf"mpjrun.sh"File.bat -np 3 DistributedSum
+
+
+
+
+Example: 
+
+C:\Users\dell\Desktop> javac -cp "C:\Users\dell\Downloads\mpj-v0_44\mpj-v0_44\lib\mpj.jar" DistributedSum.java
+
+C:\Users\dell\Desktop>"C:\Users\dell\Downloads\mpj-v0_44\mpj-v0_44\bin\mpjrun.bat" -np 3 DistributedSum
+
+
+NOTE: instead of mpjrun.sh, write mpjrun.bat 
+the number 3 denotes number of processes created. It can be changed.
