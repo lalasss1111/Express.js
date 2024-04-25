@@ -1,0 +1,13 @@
+javac ./Client.java
+javac ./Server.java
+
+(First start the server)
+1st terminal:
+java Server
+
+2nd terminal:
+java Client
+
+
+
+Edit Server.java and Client.java as required

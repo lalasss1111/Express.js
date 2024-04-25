@@ -1,0 +1,2 @@
+javac ./BerkelyAlgorithm.java
+java BerkelyAlgorithm
