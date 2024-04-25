@@ -1,0 +1,209 @@
+import java.rmi.registry.*;
+import java.util.Scanner;
+
+public class AdditionClient {
+    public static void main(String args[]) {
+        try {
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            AdditionInterface stub = (AdditionInterface) registry.lookup("AddService");
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter the first number:");
+            int a = scanner.nextInt();
+            System.out.println("Enter the second number:");
+            int b = scanner.nextInt();
+
+            int result = stub.add(a, b);
+
+            System.out.println("Result of " + a + " + " + b + " = " + result);
+
+            scanner.close();
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+=====================add
+import java.rmi.registry.*;
+import java.util.Scanner;
+
+public class PowerOfTwoClient {
+    public static void main(String args[]) {
+        try {
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            PowerOfTwoInterface stub = (PowerOfTwoInterface) registry.lookup("PowerOfTwoService");
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter the exponent:");
+            int exponent = scanner.nextInt();
+
+            double result = stub.powerOfTwo(exponent);
+
+            System.out.println("Result of 2^" + exponent + " = " + result);
+
+            scanner.close();
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+=====================power
+
+import java.rmi.registry.*;
+import java.util.Scanner;
+
+public class TemperatureConversionClient {
+    public static void main(String args[]) {
+        try {
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            TemperatureConversionInterface stub = (TemperatureConversionInterface) registry.lookup("TempConversionService");
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter the temperature in Celsius:");
+            double celsius = scanner.nextDouble();
+
+            double result = stub.celsiusToFahrenheit(celsius);
+
+            System.out.println("Result: " + celsius + " Celsius = " + result + " Fahrenheit");
+
+            scanner.close();
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+======================temp
+
+import java.rmi.registry.*;
+import java.util.Scanner;
+
+public class DistanceConversionClient {
+    public static void main(String args[]) {
+        try {
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            DistanceConversionInterface stub = (DistanceConversionInterface) registry.lookup("DistanceConversionService");
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter the distance in miles:");
+            double miles = scanner.nextDouble();
+
+            double result = stub.milesToKilometers(miles);
+
+            System.out.println("Result: " + miles + " miles = " + result + " kilometers");
+
+            scanner.close();
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+====================distance
+
+import java.rmi.registry.*;
+import java.util.Scanner;
+
+public class StringAppendClient {
+    public static void main(String args[]) {
+        try {
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            StringAppendInterface stub = (StringAppendInterface) registry.lookup("StringAppendService");
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter a name:");
+            String name = scanner.nextLine();
+
+            String result = stub.appendHello(name);
+
+            System.out.println("Result: " + result);
+
+            scanner.close();
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+==============appned
+
+import java.rmi.registry.*;
+import java.util.Scanner;
+
+public class LargestStringClient {
+    public static void main(String args[]) {
+        try {
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            LargestStringInterface stub = (LargestStringInterface) registry.lookup("LargestStringService");
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter the first string:");
+            String str1 = scanner.nextLine();
+            System.out.println("Enter the second string:");
+            String str2 = scanner.nextLine();
+
+            String result = stub.getLargestString(str1, str2);
+
+            System.out.println("Result: " + result);
+
+            scanner.close();
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+=================lexo
+import java.rmi.registry.*;
+import java.util.Scanner;
+
+public class CountVowelsClient {
+    public static void main(String args[]) {
+        try {
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            CountVowelsInterface stub = (CountVowelsInterface) registry.lookup("CountVowelsService");
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter a string:");
+            String str = scanner.nextLine();
+
+            int result = stub.countVowels(str);
+
+            System.out.println("Result: The string \"" + str + "\" contains " + result + " vowels.");
+
+            scanner.close();
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+=================vowels
+import java.rmi.registry.*;
+import java.util.Scanner;
+
+public class FactorialClient {
+    public static void main(String args[]) {
+        try {
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            FactorialInterface stub = (FactorialInterface) registry.lookup("FactorialService");
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter a number:");
+            int number = scanner.nextInt();
+
+            long result = stub.findFactorial(number);
+
+            System.out.println("Result: Factorial of " + number + " is " + result);
+
+            scanner.close();
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+===============factorial
+
