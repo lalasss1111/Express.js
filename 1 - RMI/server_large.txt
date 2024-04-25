@@ -1,0 +1,268 @@
+import java.rmi.*;
+import java.rmi.server.*;
+import java.rmi.registry.*;
+
+interface AdditionInterface extends Remote {
+    int add(int a, int b) throws RemoteException;
+}
+
+public class AdditionService extends UnicastRemoteObject implements AdditionInterface {
+    public AdditionService() throws RemoteException {
+        super();
+    }
+
+    @Override
+    public int add(int a, int b) throws RemoteException {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        try {
+            AdditionService server = new AdditionService();
+            Registry registry = LocateRegistry.createRegistry(1099);
+            registry.rebind("AddService", server);
+            System.out.println("Addition Service is ready.");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+
+===========================add==================
+
+  import java.rmi.*;
+import java.rmi.server.*;
+import java.rmi.registry.*;
+
+interface PowerOfTwoInterface extends Remote {
+    double powerOfTwo(int exponent) throws RemoteException;
+}
+
+public class PowerOfTwoService extends UnicastRemoteObject implements PowerOfTwoInterface {
+    public PowerOfTwoService() throws RemoteException {
+        super();
+    }
+
+    @Override
+    public double powerOfTwo(int exponent) throws RemoteException {
+        return Math.pow(2, exponent);
+    }
+
+    public static void main(String[] args) {
+        try {
+            PowerOfTwoService server = new PowerOfTwoService();
+            Registry registry = LocateRegistry.createRegistry(1099);
+            registry.rebind("PowerOfTwoService", server);
+            System.out.println("Power of Two Service is ready.");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+=========================
+
+  import java.rmi.*;
+import java.rmi.server.*;
+import java.rmi.registry.*;
+
+interface TemperatureConversionInterface extends Remote {
+    double celsiusToFahrenheit(double celsius) throws RemoteException;
+}
+
+public class TemperatureConversionService extends UnicastRemoteObject implements TemperatureConversionInterface {
+    public TemperatureConversionService() throws RemoteException {
+        super();
+    }
+
+    @Override
+    public double celsiusToFahrenheit(double celsius) throws RemoteException {
+        return (celsius * 9.0 / 5.0) + 32;
+    }
+
+    public static void main(String[] args) {
+        try {
+            TemperatureConversionService server = new TemperatureConversionService();
+            Registry registry = LocateRegistry.createRegistry(1099);
+            registry.rebind("TempConversionService", server);
+            System.out.println("Temperature Conversion Service is ready.");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+===================celsus
+  import java.rmi.*;
+import java.rmi.server.*;
+import java.rmi.registry.*;
+
+interface DistanceConversionInterface extends Remote {
+    double milesToKilometers(double miles) throws RemoteException;
+}
+
+public class DistanceConversionService extends UnicastRemoteObject implements DistanceConversionInterface {
+    public DistanceConversionService() throws RemoteException {
+        super();
+    }
+
+    @Override
+    public double milesToKilometers(double miles) throws RemoteException {
+        return miles * 1.60934;
+    }
+
+    public static void main(String[] args) {
+        try {
+            DistanceConversionService server = new DistanceConversionService();
+            Registry registry = LocateRegistry.createRegistry(1099);
+            registry.rebind("DistanceConversionService", server);
+            System.out.println("Distance Conversion Service is ready.");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+=================miles
+
+  import java.rmi.*;
+import java.rmi.server.*;
+import java.rmi.registry.*;
+
+interface StringAppendInterface extends Remote {
+    String appendHello(String name) throws RemoteException;
+}
+
+public class StringAppendService extends UnicastRemoteObject implements StringAppendInterface {
+    public StringAppendService() throws RemoteException {
+        super();
+    }
+
+    @Override
+    public String appendHello(String name) throws RemoteException {
+        return "Hello " + name;
+    }
+
+    public static void main(String[] args) {
+        try {
+            StringAppendService server = new StringAppendService();
+            Registry registry = LocateRegistry.createRegistry(1099);
+            registry.rebind("StringAppendService", server);
+            System.out.println("String Append Service is ready.");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+================hello
+  import java.rmi.*;
+import java.rmi.server.*;
+import java.rmi.registry.*;
+
+interface LargestStringInterface extends Remote {
+    String getLargestString(String str1, String str2) throws RemoteException;
+}
+
+public class LargestStringService extends UnicastRemoteObject implements LargestStringInterface {
+    public LargestStringService() throws RemoteException {
+        super();
+    }
+
+    @Override
+    public String getLargestString(String str1, String str2) throws RemoteException {
+        return str1.compareTo(str2) > 0 ? str1 : str2;
+    }
+
+    public static void main(String[] args) {
+        try {
+            LargestStringService server = new LargestStringService();
+            Registry registry = LocateRegistry.createRegistry(1099);
+            registry.rebind("LargestStringService", server);
+            System.out.println("Largest String Service is ready.");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+==========lexo
+
+  import java.rmi.*;
+import java.rmi.server.*;
+import java.rmi.registry.*;
+
+interface CountVowelsInterface extends Remote {
+    int countVowels(String str) throws RemoteException;
+}
+
+public class CountVowelsService extends UnicastRemoteObject implements CountVowelsInterface {
+    public CountVowelsService() throws RemoteException {
+        super();
+    }
+
+    @Override
+    public int countVowels(String str) throws RemoteException {
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char ch = Character.toLowerCase(str.charAt(i));
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        try {
+            CountVowelsService server = new CountVowelsService();
+            Registry registry = LocateRegistry.createRegistry(1099);
+            registry.rebind("CountVowelsService", server);
+            System.out.println("Count Vowels Service is ready.");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+============vowels
+
+
+  import java.rmi.*;
+import java.rmi.server.*;
+import java.rmi.registry.*;
+
+interface FactorialInterface extends Remote {
+    long findFactorial(int number) throws RemoteException;
+}
+
+public class FactorialService extends UnicastRemoteObject implements FactorialInterface {
+    public FactorialService() throws RemoteException {
+        super();
+    }
+
+    @Override
+    public long findFactorial(int number) throws RemoteException {
+        if (number == 0) return 1;
+        long factorial = 1;
+        for (int i = 1; i <= number; i++) {
+            factorial *= i;
+        }
+        return factorial;
+    }
+
+    public static void main(String[] args) {
+        try {
+            FactorialService server = new FactorialService();
+            Registry registry = LocateRegistry.createRegistry(1099);
+            registry.rebind("FactorialService", server);
+            System.out.println("Factorial Service is ready.");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
+=============factorial
+  
